@@ -18,6 +18,14 @@ object KStreams {
       .size()
   }
 
+  /**
+    * If there are joins between topics that dont have the same number of partitions make the smaller one bigger
+    * @param topic - The topic for which repartitioning is desired
+    * @param sourceTopic - The source topic to match the copartitioning to
+    * @param properties - The kafka properties
+    * @param extraSuffix - Any extra suffix you want to add to the new topic.
+    * @return the new topic as a result of the copartitioning
+    */
   def createTopicForCoPartitioning(topic: String, sourceTopic: String,
                                    properties:Properties, extraSuffix:String = ""): String = {
     try {
@@ -35,6 +43,11 @@ object KStreams {
     }
   }
 
+  /**
+    * Convert a function that can be used as a punctuator without inconvinincing the user
+    * See the s3 writer as an example
+    * @param fn - The function to wrap asa punctuator
+    */
   implicit class PunctuatorWrapper(fn: Long => Unit) extends Punctuator {
     override def punctuate(timestamp: Long): Unit = fn(timestamp)
   }

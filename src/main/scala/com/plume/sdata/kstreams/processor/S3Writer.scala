@@ -12,6 +12,16 @@ import org.slf4j.LoggerFactory
 
 import scala.collection.mutable
 
+/**
+  * This class allows a user to use a generic S3Writer processor that can write out text formats. All a user needs to do
+  * is implement a processMessage that takes in the input type and returns a ProcessedMessage
+  * @param s3Client - The AWS S3 Client
+  * @param targetDir - The target dir(s3://bucket + path)
+  * @param size - The number of messages before a flush
+  * @param periodInMillis - The minimum time to wait prior to a flush if the number of messages is less than size
+  * @tparam K - The kafka key
+  * @tparam V - The kafka value
+  */
 abstract class S3Writer[K, V](s3Client: AmazonS3,
                               targetDir: String,
                               size: Long,

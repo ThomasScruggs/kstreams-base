@@ -27,7 +27,7 @@ trait Engine  {
   /**
     * The definition of the pipeline
     * @param s3Client - The client used to serialize to S3
-    * @param topics - The topics that this pipelime will process
+    * @param topics - The topics that this pipeline will process
     * @return the pipeline to rum
     */
   def topology(s3Client: AmazonS3, topics: String*): Topology
