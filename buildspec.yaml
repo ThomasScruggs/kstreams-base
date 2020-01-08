@@ -1,0 +1,26 @@
+version: 0.2
+
+env:
+  variables:
+    ARTIFACTORY_USER: datavinci
+    ARTIFACTORY_URL:  http://artifactory-artifactory-01.inf.us-west-2.aws.plume.tech/artifactory/plume-kstreams/
+    GIT: git@github.com:plume-design-inc/kstreams-base
+    REPO_KEY_BASE: kstreams-base-repo
+  parameter-store:
+    ARTIFACTORY_PW: /CodeBuild/ARTIFACTORY_TOKEN
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+    commands:
+      - echo "Setting up git"
+      - sh codebuild/git-checkout.sh ${BRANCH} ${GIT} ${REPO_KEY_BASE}
+      - echo "setting up sbt"
+      - sh codebuild/create-sbt-creds.sh $ARTIFACTORY_URL $ARTIFACTORY_USER $ARTIFACTORY_PW
+      - echo "Releasing with sbt release"
+      - cd kstreams-base
+      - sbt 'release with-defaults'
+  post_build:
+    commands:
+      - echo "build succeeded"
