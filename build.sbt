@@ -1,8 +1,8 @@
 import Dependencies._
 
 ThisBuild / scalaVersion     := "2.11.12"
-ThisBuild / organization     := "com.plume."
-ThisBuild / organizationName := "sdata"
+//ThisBuild / organization     := "com.plume."
+//ThisBuild / organizationName := "sdata"
 
 //dependencies
 lazy val root = (project in file("."))
