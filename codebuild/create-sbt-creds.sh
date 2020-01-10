@@ -9,3 +9,5 @@ echo "realm=Artifactory Realm" > ~/.sbt/.credentials
 echo "host=${artifactory_url}" >> ~/.sbt/.credentials
 echo "user=${artifactory_user}" >> ~/.sbt/.credentials
 echo "password=${artifactory_pw}" >> ~/.sbt/.credentials
+
+cat ~/.sbt/.credentials
