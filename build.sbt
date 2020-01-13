@@ -1,8 +1,8 @@
 import Dependencies._
 
 ThisBuild / scalaVersion     := "2.11.12"
-ThisBuild / organization     := "com.plume."
-ThisBuild / organizationName := "sdata"
+//ThisBuild / organization     := "com.plume."
+//ThisBuild / organizationName := "sdata"
 
 //dependencies
 lazy val root = (project in file("."))
@@ -32,7 +32,7 @@ releaseVersionBump := sbtrelease.Version.Bump.Minor
 publishTo := {
    val artifactory = "https://artifactory-artifactory-01.inf.us-west-2.aws.plume.tech"
    if (isSnapshot.value)
-      Some("Artifactory Realm" at artifactory + "/artifactory/sdata/scala-build-snapshots")
+      Some("Artifactory Realm" at artifactory + "/artifactory/plume-kstreams/scala-build-snapshots")
    else
-      Some("Artifactory Realm"  at artifactory + "/artifactory/sdata/scala-build")
+      Some("Artifactory Realm"  at artifactory + "/artifactory/plume-kstreams/scala-build")
 }
