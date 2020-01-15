@@ -7,7 +7,7 @@ env:
     GIT: git@github.com:plume-design-inc/kstreams-base
     REPO_KEY_BASE: kstreams-base-repo
   parameter-store:
-    ARTIFACTORY_PW: /CodeBuild/ARTIFACTORY_TOKEN
+    ARTIFACTORY_PW: /CodeBuild/ARTIFACTORY_API_PW
 
 phases:
   install:
