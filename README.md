@@ -3,7 +3,7 @@ This library provides the base for all KStreams services, which helps you get ju
 make one of your own
 
 ## General flow 
-- Import jar from artifactory (TODO publish the latest build here if possible)
+- Import the kstreams-base jar from artifactory and include it in your program's build.sbt (TODO publish the latest build here if possible)
 - Implement a main app that inherits from [Driver](src/main/scala/com/plume/sdata/kstreams/driver/Driver.scala)
 - Implement methods in the driver 
     - that parses a typesafe config for the application (parseAppConfig) including engine(s) specific config
