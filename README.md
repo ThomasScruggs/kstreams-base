@@ -4,6 +4,11 @@ make one of your own
 
 ## General flow 
 - Import jar from artifactory (TODO publish the latest build here if possible)
+```
+scalaVersion := "2.11.1"
+resolvers += "Artifactory" at "https://artifactory-artifactory-01.inf.us-west-2.aws.plume.tech/artifactory/plume-kstreams/scala-build"
+libraryDependencies += "kstreams-base" %% "kstreams-base"%"0.2.0"
+```
 - Implement a main app that inherits from [Driver](src/main/scala/com/plume/sdata/kstreams/driver/Driver.scala)
 - Implement methods in the driver 
     - that parses a typesafe config for the application (parseAppConfig) including engine(s) specific config
